@@ -1,0 +1,71 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+.CardMainContent {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.textContentTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cardImageBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px 0;
+}
+.cardImage, .notIconImage {
+  height: 555px;
+  width: 845px;
+  background-position: center center;
+  border-radius: 8px;
+  padding: 5px;
+}
+.CardMainContent .shareIcon {
+  align-self: flex-start;
+  margin: 30px 0;
+}
+.regLink {
+  color: #000;
+}
+.singleNewTitle .title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+.textContentTopDate,
+.shortDesc {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #858080;
+}
+.commentsTitle {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+}
+.commentNickname {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+}
+@media (max-width: 900px) {
+  .cardImage {
+    width: 100%;
+    height: 50%;
+  }
+}

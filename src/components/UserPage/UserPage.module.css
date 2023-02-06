@@ -1,0 +1,139 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.headerRightContent {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.logo {
+  padding: 7px 35px;
+  background: #ff47ca;
+  border-radius: 5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+}
+.searchIcon,
+.accountCircleRoundedIcon,
+.menuRoundedIcon {
+  color: #7e5bc2 !important;
+  cursor: pointer;
+}
+.contentMainBlock {
+  margin: 60px 0;
+  display: flex;
+  gap: 30px;
+}
+.contentFirstBlock {
+  width: 200px;
+  height: 200px;
+}
+.profileImage {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+}
+.avatar {
+  padding: 20px;
+  border-radius: 50%;
+  background-color: #e8e8e8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.editAvatar {
+  display: flex;
+  gap: 10px;
+}
+.addMain {
+  display: flex;
+}
+.editAvatar .addDeleteBtns {
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+}
+.addDeleteBtns {
+  display: flex;
+  align-items: center;
+}
+.deleteMain {
+  display: flex;
+  align-items: center;
+}
+.trashIcon {
+  color: #a01313;
+}
+.nickEnt {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 20px 0;
+  gap: 30px;
+}
+.buttonMain button {
+  max-width: 168px;
+  width: 100%;
+  height: 30px;
+  background: #7e5bc2;
+  border-radius: 10px;
+  margin: 5px 0;
+  float: right;
+}
+.contentSecondBlock button:hover {
+  background: #623dac;
+}
+.myPosts .noPosts {
+  text-align: center;
+}
+.blockCreate {
+  display: flex;
+  justify-content: space-between;
+}
+.blockCreate button:hover{
+  background: #623dac;
+}
+@media (max-width: 700px) {
+  .contentMainBlock {
+    flex-direction: column;
+  }
+  .contentFirstBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .buttonMain {
+    display: flex;
+    justify-content: center;
+  }
+  .headerRightContent {
+    gap: 15px;
+  }
+}
+@media (max-width: 405px) {
+  .nickEnt {
+    display: flex;
+    flex-direction: column;
+
+    margin: 20px 0;
+    gap: 0px;
+  }
+}
+@media (max-width: 365px) {
+  .logo {
+    padding: 3px 5px;
+    font-size: 10px;
+  }
+}

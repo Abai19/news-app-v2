@@ -1,0 +1,86 @@
+.CardMainContent {
+  width: 100%;
+  display: flex;
+  margin: 15px 0;
+}
+.cardImage, .notIcon {
+  height: 211px;
+  width: 255px;
+  background-position: center center;
+  border-radius: 8px;
+  padding: 5px;
+}
+.cardImageBlock {
+  margin-right: 40px;
+}
+.textContent {
+  width: 100%;
+}
+.textContentTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100% !important;
+}
+.trashIcon {
+  color: #A01313;
+  margin: 10px;
+}
+.textContentTopFavIcon {
+  display: flex;
+  align-self: flex-end;
+}
+.textContentBottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px;
+}
+.readMore {
+  display: flex;
+  align-items: center;
+  color: blue;
+}
+.textContentTopDate,
+.textContentText {
+  color: #858080;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  padding-right: 10px;
+}
+.textContentTitle {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: bold;
+  color: #000000;
+  font-weight: bold;
+}
+.shareIcon {
+  color: #858080;
+  align-self: flex-start;
+}
+@media (max-width: 1240px) {
+  .CardMainContent {
+    flex-direction: column;
+  }
+  .cardImageBlock {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .textContent {
+    padding: 0 10px;
+  }
+}
+@media (max-width: 610px) {
+  .textContentTop .textContentTopDate,
+  .textContentBottom .textContentText {
+    font-size: 13px;
+  }
+  .textContentBottom .textContentTitle {
+    font-size: 18px;
+  }
+}
