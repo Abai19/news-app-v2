@@ -9,6 +9,7 @@ import SingleNew from "./components/SingleNew/SingleNew";
 import UserPage from "./components/UserPage/UserPage";
 import { Route, Routes } from "react-router-dom";
 import ModalCreatePost from "./components/ModalCreatePost/ModalCreatePost";
+import FavoriteNews from "./pages/FavoriteNews/FavoriteNews";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -22,6 +23,7 @@ root.render(
         <Route path="/newsPage/:id" element={<SingleNew />} />
         <Route path="/userPage" element={<UserPage />} />
         <Route path ="/createPost" element={<ModalCreatePost/>}/>
+        <Route path ="/favoriteNews" element={<FavoriteNews/>}/>
       </Routes>
   </BrowserRouter>
   // </React.StrictMode>

@@ -11,8 +11,10 @@ import Footer from "../Footer/Footer";
 import Post from "../Post/Post";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModalCreatePost from "../ModalCreatePost/ModalCreatePost";
+import HeaderSecond from "../HeaderSecond/HeaderSecond";
 
 function UserPage() {
+  const token = localStorage.getItem("token");
   const [data, setData] = useState({
     name: "",
     last_name: "",
@@ -23,7 +25,12 @@ function UserPage() {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    getUser();
+    if (!token) {
+      navigate("/");
+    } else {
+      getUser();
+    }
+    
   }, []);
 
   const navigate = useNavigate();
@@ -97,8 +104,8 @@ function UserPage() {
       <div className={styles.container}>
       
        <ModalCreatePost open={open} setOpen={setOpen}/>
-    
-        <header>
+      <HeaderSecond/>
+        {/* <header>
           <div className={styles.logoBlock}>
             <Link className={styles.logo} to="/newsPage">
               Your Logo
@@ -113,7 +120,7 @@ function UserPage() {
             />
             <MenuRoundedIcon className={styles.menuRoundedIcon} />
           </div>
-        </header>
+        </header> */}
         <section className={styles.contentMainBlock}>
           <div className={styles.contentFirstBlock}>
             {data.profile_image ? (

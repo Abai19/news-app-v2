@@ -7,6 +7,7 @@ export const API = {
   posts: {
     newsList: "https://megalab.pythonanywhere.com/post/" ,
     tagList: "https://megalab.pythonanywhere.com/tag/",
+    likeList: "https://megalab.pythonanywhere.com/like/"
   },
   comment: {},
 };

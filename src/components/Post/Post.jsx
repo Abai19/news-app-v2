@@ -41,7 +41,7 @@ function Post({ title, text, image, id, show }) {
             >
               September 14, 2016
             </Typography>
-            {show === "myPage" ? (
+            {show === "myPage"  ? (
               <DeleteIcon className={styles.trashIcon} />
             ) : (
               <Checkbox
@@ -64,7 +64,7 @@ function Post({ title, text, image, id, show }) {
               component="p"
               className={styles.textContentText}
             >
-              {text}
+              { text.length > 120  ? `${text.substr(0,120)}...` : text}
             </Typography>
             <Link to={`${id}`} className={styles.readMore}>
               Читать дальше <ArrowRightAltIcon fontSize="small" />
