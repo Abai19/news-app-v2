@@ -11,10 +11,11 @@ import Favorite from "@mui/icons-material/Favorite";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import DeleteIcon from "@mui/icons-material/Delete";
 import notIcon from "../Post/images/notIconImage.png"
-
+import { API } from "../../api";
+import {toast} from "react-toastify"
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-function Post({ title, text, image, id, show }) {
+function Post({ title, text, image, id, show,isLiked,putLike,deletePost }) {
   return (
     <>
       <Card className={styles.CardMainContent}>
@@ -42,12 +43,13 @@ function Post({ title, text, image, id, show }) {
               September 14, 2016
             </Typography>
             {show === "myPage"  ? (
-              <DeleteIcon className={styles.trashIcon} />
+              <DeleteIcon className={styles.trashIcon} onClick={()=> deletePost(id)} />
             ) : (
               <Checkbox
                 {...label}
-                icon={<FavoriteBorder />}
-                checkedIcon={<Favorite />}
+                onClick={()=>putLike(id)}
+                icon={isLiked ? <Favorite color="error" /> : <FavoriteBorder />}
+                 checkedIcon={<Favorite color="error"/>}
               />
             )}
           </div>

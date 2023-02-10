@@ -8,6 +8,7 @@ import Filter from "../Filter/Filter";
 import TuneIcon from "@mui/icons-material/Tune";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer"
+import { toast } from 'react-toastify';
 
 function NewsPage() {
   const token = localStorage.getItem("token");
@@ -48,6 +49,25 @@ function NewsPage() {
       setNewList(list);
     }
   };
+  const putLike = async (id) => {
+    const response = await fetch(API.posts.likeList, {
+      method: "POST",
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("token")}`,
+       "Content-Type": "application/json",
+      },
+      body: JSON.stringify({post: id}),
+    });
+    const info = await response.json();
+    console.log(info)
+    if (info) {
+  
+      toast.success("Добавлено в избранные");
+    }
+    else {
+      toast.error("Системная ошибка");
+    }
+  };
 
   return (
     <>
@@ -71,6 +91,8 @@ function NewsPage() {
                     text={item.text}
                     title={item.title}
                     id={item.id}
+                    isLiked={item.is_liked}
+                    putLike={putLike}
                   />
                 ))}
               </div>

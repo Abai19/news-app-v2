@@ -10,6 +10,8 @@ import UserPage from "./components/UserPage/UserPage";
 import { Route, Routes } from "react-router-dom";
 import ModalCreatePost from "./components/ModalCreatePost/ModalCreatePost";
 import FavoriteNews from "./pages/FavoriteNews/FavoriteNews";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -25,6 +27,7 @@ root.render(
         <Route path ="/createPost" element={<ModalCreatePost/>}/>
         <Route path ="/favoriteNews" element={<FavoriteNews/>}/>
       </Routes>
+      <ToastContainer />
   </BrowserRouter>
   // </React.StrictMode>
 );

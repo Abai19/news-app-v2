@@ -25,6 +25,7 @@
 .trashIcon {
   color: #A01313;
   margin: 10px;
+  cursor: pointer;
 }
 .textContentTopFavIcon {
   display: flex;

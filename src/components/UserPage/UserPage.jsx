@@ -12,6 +12,7 @@ import Post from "../Post/Post";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModalCreatePost from "../ModalCreatePost/ModalCreatePost";
 import HeaderSecond from "../HeaderSecond/HeaderSecond";
+import { toast } from "react-toastify";
 
 function UserPage() {
   const token = localStorage.getItem("token");
@@ -23,7 +24,7 @@ function UserPage() {
   });
   const [open, setOpen] = useState(false)
   const [list, setList] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (!token) {
       navigate("/");
@@ -33,7 +34,7 @@ function UserPage() {
     
   }, []);
 
-  const navigate = useNavigate();
+  
 
   const submitData = async () => {
     let formData = new FormData();
@@ -97,6 +98,22 @@ function UserPage() {
       setList(list);
     }
   };
+  const deletePost = async (id) => {
+    const response = await fetch(`${API.posts.newsList}${id}/`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("token")}`,
+      },
+    });
+    
+    if (response.status===204) {
+      getUser();
+      toast.success("Успешно удалено")
+    }
+    else {
+      toast.error("Ошибка")
+    }
+  };
   console.log(open)
   return (
     <>
@@ -105,22 +122,6 @@ function UserPage() {
       
        <ModalCreatePost open={open} setOpen={setOpen}/>
       <HeaderSecond/>
-        {/* <header>
-          <div className={styles.logoBlock}>
-            <Link className={styles.logo} to="/newsPage">
-              Your Logo
-            </Link>
-          </div>
-          <div className={styles.headerRightContent}>
-            <SearchIcon className={styles.searchIcon} color="primary" />
-            <AccountCircleRoundedIcon
-              className={styles.accountCircleRoundedIcon}
-              color="primary"
-              onClick={() => navigate("/userPage")}
-            />
-            <MenuRoundedIcon className={styles.menuRoundedIcon} />
-          </div>
-        </header> */}
         <section className={styles.contentMainBlock}>
           <div className={styles.contentFirstBlock}>
             {data.profile_image ? (
@@ -231,6 +232,7 @@ function UserPage() {
                 text={item.text}
                 title={item.title}
                 id={item.id}
+                deletePost={deletePost}
                 show="myPage"
               />
             ))

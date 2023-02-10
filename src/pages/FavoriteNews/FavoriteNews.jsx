@@ -4,17 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { API } from "../../api";
 import HeaderSecond from "../../components/HeaderSecond/HeaderSecond";
 import Post from "../../components/Post/Post";
-import styles from './FavoriteNews.module.css'
+import styles from './FavoriteNews.module.css';
+import { toast } from 'react-toastify';
 function FavoriteNews () {
     const [likeList, setLikeList] = useState([]);
     const token = localStorage.getItem("token");
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    
     useEffect(()=>{
         if(!token){
             navigate('/')
         }
         else {
-            getMyLikeList()
+            getMyLikeList();
         }
     },[])
     const getMyLikeList = async () => {
@@ -27,6 +29,25 @@ function FavoriteNews () {
         const list = await response.json();
         if (list) {
             setLikeList(list);
+        }
+      };
+        const putLike = async (id) => {
+        const response = await fetch(API.posts.likeList, {
+          method: "POST",
+          headers: {
+            "Authorization": `Token ${localStorage.getItem("token")}`,
+           "Content-Type": "application/json",
+          },
+          body: JSON.stringify({post: id}),
+        });
+        const info = await response.json();
+        console.log(info)
+        if (info) {
+          getMyLikeList();
+          toast.success("Добавлено в избранные");
+        }
+        else {
+          toast.error("Системная ошибка");
         }
       };
     return (
@@ -47,6 +68,8 @@ function FavoriteNews () {
                 text={item.text}
                 title={item.title}
                 id={item.id}
+                isLiked={item.is_liked}
+                putLike={putLike}
                 show="myFavorite"
               />
             ))
