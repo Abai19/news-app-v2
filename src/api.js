@@ -9,5 +9,7 @@ export const API = {
     tagList: "https://megalab.pythonanywhere.com/tag/",
     likeList: "https://megalab.pythonanywhere.com/like/"
   },
-  comment: {},
+  comment: {
+    postComment: "https://megalab.pythonanywhere.com/comment/"
+  },
 };

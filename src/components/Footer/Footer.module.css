@@ -1,6 +1,6 @@
 .footer {
   background: #151515;
-  height: 22vh;
+  /* height: 22vh; */
 }
 .container {
   width: 80%;
@@ -17,7 +17,7 @@
 }
 .logo {
   padding: 7px 35px;
-  background: #ff47ca;
+  /* background: #ff47ca; */
   border-radius: 5px;
   text-decoration: none;
   text-transform: uppercase;

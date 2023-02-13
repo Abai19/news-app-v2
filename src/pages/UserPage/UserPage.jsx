@@ -7,11 +7,11 @@ import UserIcon from "../UserPage/images/image.png";
 import { Button, TextField, Typography } from "@mui/material";
 import { API } from "../../api";
 import { useEffect, useState } from "react";
-import Footer from "../Footer/Footer";
-import Post from "../Post/Post";
+import Footer from "../../components/Footer/Footer";
+import Post from "../../components/Post/Post";
 import DeleteIcon from "@mui/icons-material/Delete";
-import ModalCreatePost from "../ModalCreatePost/ModalCreatePost";
-import HeaderSecond from "../HeaderSecond/HeaderSecond";
+import ModalCreatePost from "../../components/ModalCreatePost/ModalCreatePost";
+import HeaderSecond from "../../components/HeaderSecond/HeaderSecond";
 import { toast } from "react-toastify";
 
 function UserPage() {

@@ -1,8 +1,8 @@
-* {
+/* * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
+} */
 .container {
   width: 80%;
   margin: 0 auto;
@@ -57,11 +57,34 @@
   font-weight: 500;
   font-size: 24px;
   line-height: 28px;
+  margin-bottom: 30px;
+}
+.comments {
+  margin-bottom: 30px!important;
 }
 .commentNickname {
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
+}
+.commentBlock {
+  margin-bottom: 20px;
+}
+.replyBtn {
+  color: #7E5BC2
+}
+.replyBlock {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.childContainer {
+  margin-left: 100px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.commentsInner {
+  margin-top:30px;
 }
 @media (max-width: 900px) {
   .cardImage {

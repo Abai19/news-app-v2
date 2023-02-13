@@ -1,5 +1,6 @@
 import styles from "./Footer.module.css";
 import { Link } from "react-router-dom";
+import {ReactComponent as Logo} from './logoFooter.svg'
 
 function Footer() {
   return (
@@ -8,7 +9,7 @@ function Footer() {
         <div className={styles.container}>
           <div className={styles.logoBlock}>
             <Link className={styles.logo} to="/newsPage">
-              Your Logo
+              <Logo/>
             </Link>
           </div>
           <div className={styles.footerLinks}>

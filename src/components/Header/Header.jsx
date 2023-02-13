@@ -3,7 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import { Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import {ReactComponent as Logo} from './images/logo.svg'
+import {ReactComponent as Logo} from './images/logoBlack.svg'
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import React from 'react'
@@ -19,7 +19,7 @@ function Header() {
       <header className={styles.header}>
         <div className={styles.container}>
           <div className={styles.logoBlock}>
-            <Link className={styles.logo} to="/newsPage">
+            <Link  to="/newsPage">
               <Logo/>
             </Link>
           </div>

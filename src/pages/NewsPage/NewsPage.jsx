@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import styles from "./NewsPage.module.css";
 import { CircularProgress } from "@mui/material";
 import { API } from "../../api";
-import Post from "../Post/Post";
-import Filter from "../Filter/Filter";
+import Post from "../../components/Post/Post";
+import Filter from "../../components/Filter/Filter";
 import TuneIcon from "@mui/icons-material/Tune";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer"
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer"
 import { toast } from 'react-toastify';
 
 function NewsPage() {
