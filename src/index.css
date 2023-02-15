@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.pagination {
+  display:flex;
+  justify-content: center;
+  width: 100%;
+  border-radius: 8px;
+}
+.page-item  {
+  border: 1px solid #dee2e6;
+  padding: 4px 10px;
+  color:#7E5BC2;
+  list-style: none;
+  cursor: pointer;
+}
+.page-item:hover{
+  background-color: #dee2e6;
+}
+.active, .active:hover {
+  background-color: #7E5BC2;
+  border: 1px solid #7E5BC2;
+  color: #fff
+}

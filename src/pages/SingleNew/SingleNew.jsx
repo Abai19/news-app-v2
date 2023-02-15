@@ -20,7 +20,11 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 function SingleNew() {
   const { id } = useParams();
   const token = localStorage.getItem("token");
-  const [commentText, setCommentText] = useState('')
+  const [commentText, setCommentText] = useState('');
+  const [replyText, setReplyText]= useState({
+    id: 0,
+    text: ''
+  })
   const [singleNew, setsingleNew] = useState({
     author: '',
     comment: [],
@@ -72,6 +76,26 @@ function SingleNew() {
       toast.error("Системная ошибка");
     }
   }
+  const sendReply= async(idParrent)=> {
+       const response = await fetch(API.comment.postComment, {
+      method: "POST",
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("token")}`,
+       "Content-Type": "application/json",
+      },
+      body: JSON.stringify({post: id, text: replyText.text, parent: idParrent}),
+    });
+    const info = await response.json();
+    console.log(info)
+    if (info) {
+      getSengleNew();
+      toast.success("Ответ успешно добавлен!");
+    }
+    else {
+      toast.error("Системная ошибка");
+    }
+  }
+
   console.log(singleNew);
   return (
     <>
@@ -165,8 +189,11 @@ function SingleNew() {
                           <Button className={styles.replyBtn}>
                             ответить
                             </Button>
-                            <TextField size="small"></TextField>
-                            <Button variant="contained" className={styles.replyBtn}>
+                            <TextField size="small" 
+                            value={replyText.id == comment.id ? replyText.text : ""} 
+                            onChange={(e)=> setReplyText({text: e.target.value, id:comment.id})} />
+                            <Button variant="contained" className={styles.replyBtn} 
+                            onClick={()=>sendReply(comment.id)}>
                               отправить
                             </Button>
                           </div>
@@ -195,13 +222,13 @@ function SingleNew() {
                                       >
                                         September 14, 2016
                                       </Typography>
-                                        <Button className={styles.replyBtn}>
+                                        {/* <Button className={styles.replyBtn}>
                                           ответить
-                                          </Button>
-                                          <TextField size="small"></TextField>
+                                          </Button> */}
+                                          {/* <TextField size="small" ></TextField>
                                           <Button variant="contained" className={styles.replyBtn}>
                                             отправить
-                                          </Button>
+                                          </Button> */}
                                     </div>
                                         </div>
 

@@ -9,6 +9,7 @@ import TuneIcon from "@mui/icons-material/Tune";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer"
 import { toast } from 'react-toastify';
+import ReactPaginate from 'react-paginate';
 
 function NewsPage() {
   const token = localStorage.getItem("token");
@@ -68,6 +69,17 @@ function NewsPage() {
       toast.error("Системная ошибка");
     }
   };
+  const [itemOffset, setItemOffset] = useState(0);
+  const endOffset = itemOffset + 5;
+  const currentItems = newsList.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(newsList.length / 5);
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * 5) % newsList.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
 
   return (
     <>
@@ -82,9 +94,9 @@ function NewsPage() {
           </div>
 
           <div className={styles.mainNewsContent}>
-            {newsList.length > 0 ? (
+            {currentItems.length > 0 ? (
               <div className={styles.post}>
-                {newsList.map((item) => (
+                {currentItems.map((item) => (
                   <Post
                     image={item.image}
                     key={item.id}
@@ -95,12 +107,32 @@ function NewsPage() {
                     putLike={putLike}
                   />
                 ))}
+                  <ReactPaginate
+                      breakLabel="..."
+                      nextLabel="след >"
+                      onPageChange={handlePageClick}
+                      pageRangeDisplayed={5}
+                      pageCount={pageCount}
+                      previousLabel="< пред"
+                      renderOnZeroPageCount={null}
+                      containerClassName="pagination"
+                      activeClassName="active"
+                      pageClassName="page-item"
+                      pageLinkClassName="page-link"
+                      previousClassName="page-item"
+                      previousLinkClassName="page-link"
+                      nextClassName="page-item"
+                      nextLinkClassName="page-link"
+                      breakClassName="page-item"
+                      breakLinkClassName="page-link"
+                  />
               </div>
             ) : (
               <div className={styles.circularBlock}>
                 <CircularProgress className={styles.circularProgress} />
               </div>
             )}
+            
           </div>
         </div>
         <Footer/>
