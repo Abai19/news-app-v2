@@ -12,22 +12,25 @@ import ModalCreatePost from "./components/ModalCreatePost/ModalCreatePost";
 import FavoriteNews from "./pages/FavoriteNews/FavoriteNews";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-
+import { store } from './redux/store'
+import { Provider } from 'react-redux'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-  <BrowserRouter>
-    <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/newsPage" element={<NewsPage />} />
-        <Route path="/:title/:id" element={<SingleNew />} />
-        <Route path="/userPage" element={<UserPage />} />
-        <Route path ="/createPost" element={<ModalCreatePost/>}/>
-        <Route path ="/favoriteNews" element={<FavoriteNews/>}/>
-      </Routes>
-      <ToastContainer />
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/newsPage" element={<NewsPage />} />
+          <Route path="/:title/:id" element={<SingleNew />} />
+          <Route path="/userPage" element={<UserPage />} />
+          <Route path ="/createPost" element={<ModalCreatePost/>}/>
+          <Route path ="/favoriteNews" element={<FavoriteNews/>}/>
+        </Routes>
+        <ToastContainer />
+    </BrowserRouter>
+  </Provider>
   // </React.StrictMode>
 );

@@ -3,9 +3,13 @@ import { Button, FormControl, TextField, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { API } from "../../api";
+import { useDispatch, useSelector } from "react-redux";
+import { getTokenFunction } from "../../redux/tokenSlice";
 
 function Login() {
-  const token = localStorage.getItem("token");
+ // const token = localStorage.getItem("token");
+  const token = useSelector(state=> state.token.token);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
     if (token) {
@@ -27,22 +31,9 @@ function Login() {
       alert("Enter your nickname or password");
       return;
     }
-    const response = await fetch(API.users.login, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    if (response.ok) {
-      const result = await response.json();
-      localStorage.setItem("token", result.token);
-      navigate("/NewsPage");
-    } else {
-      alert("Incorrect nickname or password");
-    }
+    dispatch(getTokenFunction({data,navigate}))
   };
-  // console.log(data);
+   console.log(token);
   return (
     <div className={styles.container}>
       <div className={styles.forCentr}>
